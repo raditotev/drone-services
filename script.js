@@ -1,101 +1,125 @@
-// SkyView Drone Services - Main JavaScript
+document.addEventListener('DOMContentLoaded', () => {
+  const navbar = document.getElementById('navbar');
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('nav-links');
+  const navLinkElements = document.querySelectorAll('.nav-link');
+  const contactForm = document.getElementById('contact-form');
+  const sections = document.querySelectorAll('section[id]');
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Elements
-    const navbar = document.getElementById('navbar');
-    const navToggle = document.getElementById('navToggle');
-    const navMenu = document.getElementById('navMenu');
-    const contactForm = document.getElementById('contactForm');
-    const navLinks = document.querySelectorAll('.nav-menu a');
+  // ========================
+  // Navbar scroll effect
+  // ========================
+  function handleNavbarScroll() {
+    if (window.scrollY > 50) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+  }
 
-    // Navbar scroll effect
-    function handleScroll() {
-        if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
+  window.addEventListener('scroll', handleNavbarScroll, { passive: true });
+  handleNavbarScroll();
+
+  // ========================
+  // Mobile hamburger toggle
+  // ========================
+  hamburger.addEventListener('click', () => {
+    const isActive = hamburger.classList.toggle('active');
+    navLinks.classList.toggle('active');
+    hamburger.setAttribute('aria-expanded', isActive);
+  });
+
+  // Close mobile menu when clicking a link
+  navLinkElements.forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('active');
+      navLinks.classList.remove('active');
+      hamburger.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // Close mobile menu when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!navbar.contains(e.target) && navLinks.classList.contains('active')) {
+      hamburger.classList.remove('active');
+      navLinks.classList.remove('active');
+      hamburger.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  // ========================
+  // Scroll animations
+  // ========================
+  const animatedElements = document.querySelectorAll('[data-animate]');
+
+  const animationObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // Add staggered delay for service cards
+        const card = entry.target;
+        if (card.classList.contains('service-card')) {
+          const cards = [...document.querySelectorAll('.service-card')];
+          const index = cards.indexOf(card);
+          card.style.transitionDelay = `${index * 0.1}s`;
         }
-    }
 
-    window.addEventListener('scroll', handleScroll);
-
-    // Mobile navigation toggle
-    navToggle.addEventListener('click', function() {
-        navToggle.classList.toggle('active');
-        navMenu.classList.toggle('active');
-        document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+        card.classList.add('visible');
+        animationObserver.unobserve(card);
+      }
     });
+  }, {
+    threshold: 0.15,
+    rootMargin: '0px 0px -50px 0px'
+  });
 
-    // Close mobile menu when clicking a link
-    navLinks.forEach(function(link) {
-        link.addEventListener('click', function() {
-            navToggle.classList.remove('active');
-            navMenu.classList.remove('active');
-            document.body.style.overflow = '';
+  animatedElements.forEach(el => animationObserver.observe(el));
+
+  // ========================
+  // Active nav highlighting
+  // ========================
+  const navObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.getAttribute('id');
+        navLinkElements.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === `#${id}`) {
+            link.classList.add('active');
+          }
         });
+      }
     });
+  }, {
+    threshold: 0.3,
+    rootMargin: `-${parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-height')) || 80}px 0px 0px 0px`
+  });
 
-    // Smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                const headerOffset = 80;
-                const elementPosition = target.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+  sections.forEach(section => navObserver.observe(section));
 
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
+  // ========================
+  // Contact form
+  // ========================
+  contactForm.addEventListener('submit', (e) => {
+    e.preventDefault();
 
-    // Contact form handling
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
+    const formData = new FormData(contactForm);
+    const data = Object.fromEntries(formData.entries());
 
-            // Get form data
-            const formData = new FormData(contactForm);
-            const data = Object.fromEntries(formData);
+    console.log('Form submission:', data);
 
-            // Simple validation
-            if (!data.name || !data.email || !data.message) {
-                alert('Моля, попълнете всички задължителни полета.');
-                return;
-            }
+    const submitBtn = contactForm.querySelector('.btn-submit');
+    const originalHTML = submitBtn.innerHTML;
 
-            // Show success message (in production, this would send to a server)
-            alert('Благодарим Ви за съобщението! Ще се свържем с Вас скоро.');
-            contactForm.reset();
-        });
-    }
+    submitBtn.innerHTML = '<span>Изпратено!</span><i class="fa-solid fa-check"></i>';
+    submitBtn.classList.add('success');
+    submitBtn.disabled = true;
 
-    // Intersection Observer for scroll animations
-    const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.1
-    };
+    contactForm.reset();
 
-    const observer = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-                observer.unobserve(entry.target);
-            }
-        });
-    }, observerOptions);
-
-    // Observe elements for animation
-    document.querySelectorAll('.service-card, .portfolio-item, .contact-item').forEach(function(el) {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(20px)';
-        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(el);
-    });
+    setTimeout(() => {
+      submitBtn.innerHTML = originalHTML;
+      submitBtn.classList.remove('success');
+      submitBtn.disabled = false;
+    }, 3000);
+  });
 });
