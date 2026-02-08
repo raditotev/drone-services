@@ -1,0 +1,252 @@
+/* =====================
+   ROOT VARIABLES
+===================== */
+:root {
+  --bg-dark: #0b0d10;
+  --bg-section: #11141a;
+  --card-bg: #0f1218;
+  --accent: #00c2ff;
+  --text-main: #ffffff;
+  --text-muted: #a0a0a0;
+}
+
+/* =====================
+   RESET
+===================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* =====================
+   GLOBAL
+===================== */
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg-dark);
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 700;
+}
+
+p {
+  color: var(--text-muted);
+}
+
+section {
+  padding: 80px 20px;
+}
+
+h2 {
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 50px;
+}
+
+/* =====================
+   HERO
+===================== */
+.hero {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  background: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  z-index: 0;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 800px;
+  padding: 20px;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.hero-content p {
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+}
+
+/* CTA BUTTON */
+.btn-primary {
+  display: inline-block;
+  background: var(--accent);
+  color: #000;
+  padding: 14px 30px;
+  border-radius: 30px;
+  font-weight: 600;
+  text-decoration: none;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(0, 194, 255, 0.3);
+}
+
+/* =====================
+   DRONE ANIMATION
+===================== */
+.drone-float {
+  position: absolute;
+  bottom: 40px;
+  right: 40px;
+  font-size: 2.4rem;
+  color: var(--accent);
+  opacity: 0.7;
+  z-index: 2;
+  animation: floatDrone 6s ease-in-out infinite;
+}
+
+@keyframes floatDrone {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* =====================
+   SERVICES
+===================== */
+.services {
+  background: var(--bg-section);
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.service-card {
+  background: var(--card-bg);
+  padding: 30px;
+  border-radius: 16px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-6px);
+}
+
+.service-card i {
+  font-size: 2.6rem;
+  color: var(--accent);
+  margin-bottom: 20px;
+}
+
+.service-card h3 {
+  margin-bottom: 10px;
+}
+
+.services-note {
+  margin-top: 40px;
+  text-align: center;
+  color: var(--text-muted);
+}
+
+/* =====================
+   CONTACT
+===================== */
+.contact-form {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 14px;
+  background: var(--card-bg);
+  border: 1px solid #1f2330;
+  color: white;
+  border-radius: 10px;
+  font-size: 1rem;
+}
+
+.contact-form textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+.contact-form button {
+  background: var(--accent);
+  color: #000;
+  padding: 14px;
+  border: none;
+  border-radius: 30px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.contact-form button:hover {
+  transform: translateY(-3px);
+}
+
+/* =====================
+   FOOTER
+===================== */
+footer {
+  text-align: center;
+  padding: 30px;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  background: #090b0f;
+}
+
+/* =====================
+   RESPONSIVE
+===================== */
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 2.2rem;
+  }
+
+  .drone-float {
+    display: none;
+  }
+}

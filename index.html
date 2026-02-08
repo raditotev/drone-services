@@ -1,217 +1,135 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="bg">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SkyView - Професионални дрон услуги</title>
-  <meta name="description" content="SkyView предлага професионални дрон услуги - въздушно заснемане, фотосфери, инспекции и заснемане на недвижими имоти.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Montserrat:wght@600;700&display=swap&subset=cyrillic" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- Navbar -->
-  <nav class="navbar" id="navbar">
-    <div class="container nav-container">
-      <a href="#начало" class="nav-logo">
-        <i class="fa-solid fa-paper-plane"></i>
-        <span>SkyView</span>
-      </a>
-      <button class="hamburger" id="hamburger" aria-label="Отвори меню" aria-expanded="false">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
-      </button>
-      <ul class="nav-links" id="nav-links">
-        <li><a href="#начало" class="nav-link active">Начало</a></li>
-        <li><a href="#услуги" class="nav-link">Услуги</a></li>
-        <li><a href="#контакт" class="nav-link">Контакт</a></li>
-      </ul>
-    </div>
-  </nav>
+    <!-- SEO -->
+    <title>Your Drone Services | Професионално въздушно заснемане</title>
+    <meta
+      name="description"
+      content="Професионално въздушно видео и фото заснемане с дрон. Инспекции, имоти, фотосфери и строителни обекти."
+    />
+    <meta
+      name="keywords"
+      content="дрон заснемане, въздушно видео, инспекция с дрон, фотосфери, имоти"
+    />
+    <meta name="author" content="Your Drone Services" />
 
-  <!-- Hero Section -->
-  <section class="hero" id="начало">
-    <div class="hero-overlay"></div>
-    <div class="container hero-content" data-animate>
-      <h1>Професионални дрон услуги за вашия бизнес</h1>
-      <p class="hero-subtitle">Висококачествено въздушно заснемане, инспекции и иновативни решения с дронове за вашите проекти</p>
-      <a href="#услуги" class="btn btn-primary">
-        <span>Вижте нашите услуги</span>
-        <i class="fa-solid fa-arrow-down"></i>
-      </a>
-    </div>
-  </section>
+    <!-- Social sharing -->
+    <meta property="og:title" content="Your Drone Services" />
+    <meta
+      property="og:description"
+      content="Качествено въздушно заснемане с дрон – видео, снимки и инспекции."
+    />
+    <meta property="og:type" content="website" />
 
-  <!-- Services Section -->
-  <section class="services" id="услуги">
-    <div class="container">
-      <h2 class="section-title" data-animate>Нашите услуги</h2>
-      <p class="section-subtitle" data-animate>Предлагаме широка гама от професионални дрон услуги</p>
+    <!-- Fonts & Icons -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
 
-      <div class="services-grid">
-        <div class="service-card" data-animate>
-          <div class="service-icon">
-            <i class="fa-solid fa-video"></i>
-          </div>
-          <div class="service-image-placeholder">
-            <i class="fa-solid fa-image"></i>
-          </div>
-          <h3>Въздушно видео & фото заснемане</h3>
-          <p>Професионално въздушно заснемане с висока резолюция за филми, реклами, събития и корпоративни проекти.</p>
-        </div>
+    <!-- Animations -->
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
 
-        <div class="service-card" data-animate>
-          <div class="service-icon">
-            <i class="fa-solid fa-street-view"></i>
-          </div>
-          <div class="service-image-placeholder">
-            <i class="fa-solid fa-image"></i>
-          </div>
-          <h3>Фотосфери</h3>
-          <p>360° панорамни фотосфери за виртуални обиколки, Google Street View интеграция и интерактивно представяне.</p>
-        </div>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
 
-        <div class="service-card" data-animate>
-          <div class="service-icon">
-            <i class="fa-solid fa-magnifying-glass"></i>
-          </div>
-          <div class="service-image-placeholder">
-            <i class="fa-solid fa-image"></i>
-          </div>
-          <h3>Инспекция</h3>
-          <p>Детайлна инспекция на покриви, соларни панели, комини, електропроводи и стълбове — безопасно и ефективно.</p>
-        </div>
+  <body>
+    <!-- HERO -->
+    <header class="hero">
+      <video class="hero-video" autoplay muted loop playsinline>
+        <source src="drone.mp4" type="video/mp4" />
+      </video>
 
-        <div class="service-card" data-animate>
-          <div class="service-icon">
-            <i class="fa-solid fa-building"></i>
-          </div>
-          <div class="service-image-placeholder">
-            <i class="fa-solid fa-image"></i>
-          </div>
-          <h3>Заснемане на недвижими имоти</h3>
-          <p>Ефектно представяне на къщи, вили, хотели и имоти от въздуха за по-бързи и успешни продажби.</p>
-        </div>
+      <div class="hero-overlay"></div>
+
+      <div class="hero-content" data-aos="fade-up">
+        <h1>Поглед от високо, който прави разлика</h1>
+        <p>Професионално въздушно видео, снимки и инспекции с дрон</p>
+        <a href="#contact" class="btn-primary">
+          <i class="fa-solid fa-paper-plane"></i> Изпрати запитване
+        </a>
       </div>
 
-      <p class="services-note" data-animate>
-        <i class="fa-solid fa-circle-info"></i>
-        Ако не виждате описана желаната от вас услуга, не се колебайте да се свържете с нас — ще намерим решение заедно.
-      </p>
-    </div>
-  </section>
+      <!-- Subtle drone icon animation -->
+      <i class="fa-solid fa-drone drone-float"></i>
+    </header>
 
-  <!-- Contact Section -->
-  <section class="contact" id="контакт">
-    <div class="container">
-      <h2 class="section-title" data-animate>Свържете се с нас</h2>
-      <p class="section-subtitle" data-animate>Изпратете ни запитване и ще се свържем с вас възможно най-скоро</p>
+    <!-- SERVICES -->
+    <main>
+      <section class="services" id="services">
+        <h2 data-aos="fade-up">Услуги</h2>
 
-      <div class="contact-grid" data-animate>
-        <div class="contact-info">
-          <div class="contact-item">
-            <i class="fa-solid fa-envelope"></i>
-            <div>
-              <h4>Имейл</h4>
-              <p>info@skyview.bg</p>
-            </div>
-          </div>
-          <div class="contact-item">
-            <i class="fa-solid fa-phone"></i>
-            <div>
-              <h4>Телефон</h4>
-              <p>+359 88 888 8888</p>
-            </div>
-          </div>
-          <div class="contact-item">
-            <i class="fa-solid fa-location-dot"></i>
-            <div>
-              <h4>Локация</h4>
-              <p>България</p>
-            </div>
-          </div>
+        <div class="services-grid">
+          <article class="service-card" data-aos="fade-up">
+            <i class="fa-solid fa-video"></i>
+            <h3>Въздушно видео & фото</h3>
+            <p>
+              Кинематографично заснемане от въздуха за бизнеси, събития и
+              проекти.
+            </p>
+          </article>
+
+          <article class="service-card" data-aos="fade-up" data-aos-delay="100">
+            <i class="fa-solid fa-globe"></i>
+            <h3>Фотосфери 360°</h3>
+            <p>
+              Интерактивни въздушни фотосфери за имоти и онлайн презентации.
+            </p>
+          </article>
+
+          <article class="service-card" data-aos="fade-up" data-aos-delay="200">
+            <i class="fa-solid fa-solar-panel"></i>
+            <h3>Инспекции</h3>
+            <p>Покриви, соларни панели, комини и инфраструктура без риск.</p>
+          </article>
+
+          <article class="service-card" data-aos="fade-up" data-aos-delay="300">
+            <i class="fa-solid fa-house"></i>
+            <h3>Недвижими имоти</h3>
+            <p>Къщи, вили, хотели и строителни обекти – включително прогрес.</p>
+          </article>
         </div>
 
-        <form class="contact-form" id="contact-form">
-          <div class="form-row">
-            <div class="form-group">
-              <label for="name">Име</label>
-              <input type="text" id="name" name="name" placeholder="Вашето име" required>
-            </div>
-            <div class="form-group">
-              <label for="email">Имейл</label>
-              <input type="email" id="email" name="email" placeholder="your@email.com" required>
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="phone">Телефон</label>
-              <input type="tel" id="phone" name="phone" placeholder="+359 ...">
-            </div>
-            <div class="form-group">
-              <label for="service">Услуга</label>
-              <select id="service" name="service">
-                <option value="" disabled selected>Изберете услуга</option>
-                <option value="video-photo">Въздушно видео & фото заснемане</option>
-                <option value="photospheres">Фотосфери</option>
-                <option value="inspection">Инспекция</option>
-                <option value="real-estate">Заснемане на недвижими имоти</option>
-                <option value="other">Друго</option>
-              </select>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="message">Съобщение</label>
-            <textarea id="message" name="message" rows="5" placeholder="Опишете вашия проект или запитване..." required></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary btn-submit">
-            <span>Изпратете</span>
-            <i class="fa-solid fa-paper-plane"></i>
+        <p class="services-note" data-aos="fade-up">
+          Не намирате търсената услуга? Пишете ми и ще я обсъдим.
+        </p>
+      </section>
+
+      <!-- CONTACT -->
+      <section class="contact" id="contact">
+        <h2 data-aos="fade-up">Изпрати запитване</h2>
+
+        <form
+          class="contact-form"
+          data-aos="fade-up"
+          aria-label="Форма за контакт"
+        >
+          <input type="text" placeholder="Име" aria-label="Име" required />
+          <input type="email" placeholder="Имейл" aria-label="Имейл" required />
+          <textarea
+            placeholder="Опишете вашия проект..."
+            aria-label="Съобщение"
+            required
+          ></textarea>
+          <button type="submit">
+            <i class="fa-solid fa-paper-plane"></i> Изпрати
           </button>
         </form>
-      </div>
-    </div>
-  </section>
+      </section>
+    </main>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container footer-content">
-      <div class="footer-brand">
-        <a href="#начало" class="nav-logo">
-          <i class="fa-solid fa-paper-plane"></i>
-          <span>SkyView</span>
-        </a>
-        <p>Професионални дрон услуги за вашия бизнес</p>
-      </div>
-      <div class="footer-links">
-        <h4>Навигация</h4>
-        <ul>
-          <li><a href="#начало">Начало</a></li>
-          <li><a href="#услуги">Услуги</a></li>
-          <li><a href="#контакт">Контакт</a></li>
-        </ul>
-      </div>
-      <div class="footer-links">
-        <h4>Услуги</h4>
-        <ul>
-          <li><a href="#услуги">Въздушно заснемане</a></li>
-          <li><a href="#услуги">Фотосфери</a></li>
-          <li><a href="#услуги">Инспекции</a></li>
-          <li><a href="#услуги">Недвижими имоти</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <div class="container">
-        <p>&copy; 2025 SkyView. Всички права запазени.</p>
-      </div>
-    </div>
-  </footer>
+    <footer>
+      <p>© 2026 Your Drone Services</p>
+    </footer>
 
-  <script src="script.js"></script>
-</body>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script src="./script.js"></script>
+  </body>
 </html>
