@@ -120,9 +120,22 @@
           data-aos="fade-up"
           aria-label="Форма за контакт"
         >
-          <input type="text" placeholder="Име" aria-label="Име" required />
-          <input type="email" placeholder="Имейл" aria-label="Имейл" required />
+          <input
+            type="text"
+            name="name"
+            placeholder="Име"
+            aria-label="Име"
+            required
+          />
+          <input
+            type="email"
+            name="email"
+            placeholder="Имейл"
+            aria-label="Имейл"
+            required
+          />
           <textarea
+            name="message"
             placeholder="Опишете вашия проект..."
             aria-label="Съобщение"
             required
@@ -131,6 +144,18 @@
             <i class="fa-solid fa-paper-plane"></i> Изпрати
           </button>
         </form>
+
+        <!-- Success Message -->
+        <div class="form-success" aria-live="polite">
+          <div class="form-success-icon">
+            <i class="fa-solid fa-check"></i>
+          </div>
+          <h3>Съобщението е изпратено!</h3>
+          <p>
+            Благодаря, че се свързахте с мен. Ще бъда в контакт с вас възможно
+            най-скоро, за да обсъдим детайлите на вашия проект.
+          </p>
+        </div>
       </section>
     </main>
 

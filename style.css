@@ -189,12 +189,25 @@ h2 {
 /* =====================
    CONTACT
 ===================== */
+.contact {
+  position: relative;
+  min-height: 500px;
+}
+
 .contact-form {
   max-width: 600px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 20px;
+  opacity: 1;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.contact-form.hide {
+  opacity: 0;
+  transform: translateY(-20px);
+  pointer-events: none;
 }
 
 .contact-form input,
@@ -225,6 +238,76 @@ h2 {
 
 .contact-form button:hover {
   transform: translateY(-3px);
+}
+
+.contact-form button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Success Message */
+.form-success {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 60px 20px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease 0.2s, transform 0.5s ease 0.2s;
+  pointer-events: none;
+  display: none;
+}
+
+.form-success.show {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.form-success-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 20px;
+  background: var(--accent);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: successPulse 0.6s ease;
+}
+
+.form-success-icon i {
+  font-size: 2.5rem;
+  color: #000;
+}
+
+.form-success h3 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  color: var(--text-main);
+}
+
+.form-success p {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+@keyframes successPulse {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 /* =====================
