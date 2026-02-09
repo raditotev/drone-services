@@ -3,6 +3,18 @@ AOS.init({
   once: true
 });
 
+// Plausible: track custom events (no-op if script blocked or not loaded)
+function track(name, props) {
+  if (typeof window.plausible === 'function') {
+    window.plausible(name, props ? { props } : undefined);
+  }
+}
+
+// Hero CTA click
+document.querySelector('.hero .btn-primary')?.addEventListener('click', function () {
+  track('CTA Click');
+});
+
 document.querySelector('.contact-form').addEventListener('submit', async function (e) {
   e.preventDefault();
 
@@ -58,6 +70,7 @@ document.querySelector('.contact-form').addEventListener('submit', async functio
     });
 
     if (response.ok) {
+      track('Contact Form Submitted');
       // Animate form out
       form.classList.add('hide');
 
